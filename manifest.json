@@ -1,0 +1,17 @@
+{
+  "name": "Web Logger Extension",
+  "version": "1.0",
+  "description": "I spy with my little eye...",
+  "background": {
+    "scripts": [
+      "javascript/background.js"
+    ],
+    "persistent": true
+  },
+  "permissions": [
+    "*://*/*",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "manifest_version": 2
+}
