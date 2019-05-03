@@ -1,13 +1,34 @@
+const axios     = require('axios');
 const constants = require("../utils/constants");
 
 chrome.webRequest.onBeforeRequest.addListener(
+  // INSERT INTO network_logs(date, type, method, url, content) VALUES (?, ?, ?, ?, ?)
   function (details) {
-    let breakLine = "---------------------------" + "\n";
-    let timeStamp = new Date().toLocaleString()   + "\n";
-    let method    = "METHOD: "  + details.method  + "\n";
-    let type      = "TYPE: "    + details.type    + "\n";
-    let url       = "URL: "     + details.url     + "\n";
-    alert(breakLine + timeStamp + method + type + url);
+    if (constants.apiURL === details.url) return;
+
+    let content;
+
+    if (details.hasOwnProperty("requestBody")) {
+      if ((details.requestBody.hasOwnProperty("formData"))) {
+        content = details.requestBody.formData
+      }
+    }
+
+    let payload = {
+      "date"    : new Date().toLocaleString(),
+      "type"    : details.type,
+      "method"  : details.method,
+      "url"     : details.url,
+      "content" : content
+    };
+
+    axios.post(constants.apiURL, payload)
+      .then((response) => {
+        alert(response)
+      })
+      .catch((error) => {
+        alert(error)
+      })
   },
   {
     urls: [
