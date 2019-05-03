@@ -2,7 +2,6 @@ const axios     = require('axios');
 const constants = require("../utils/constants");
 
 chrome.webRequest.onBeforeRequest.addListener(
-  // INSERT INTO network_logs(date, type, method, url, content) VALUES (?, ?, ?, ?, ?)
   function (details) {
     if (constants.apiURL === details.url) return;
 
@@ -13,7 +12,7 @@ chrome.webRequest.onBeforeRequest.addListener(
         content = details.requestBody.formData
       }
     }
-
+    c
     let payload = {
       "date"    : new Date().toLocaleString(),
       "type"    : details.type,
@@ -22,7 +21,14 @@ chrome.webRequest.onBeforeRequest.addListener(
       "content" : content
     };
 
-    axios.post(constants.apiURL, payload)
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      }
+    };
+
+    axios.post(constants.apiURL, payload, config)
       .then((response) => {
         alert(response)
       })
