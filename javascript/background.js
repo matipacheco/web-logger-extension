@@ -1,3 +1,5 @@
+const constants = require("../utils/constants");
+
 chrome.webRequest.onBeforeRequest.addListener(
   function (details) {
     let breakLine = "---------------------------" + "\n";

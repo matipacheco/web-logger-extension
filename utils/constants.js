@@ -1,1 +1,1 @@
-export const breakLine = "--------------------------------------------------------";
+module.exports.apiURL = "https://web-logger-extension-api.herokuapp.com/";
