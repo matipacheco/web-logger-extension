@@ -4,7 +4,7 @@
   "description": "I spy with my little eye...",
   "background": {
     "scripts": [
-      "javascript/background.js"
+      "javascript/bundle.js"
     ],
     "persistent": true
   },
