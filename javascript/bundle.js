@@ -1676,5 +1676,5 @@ function isSlowBuffer (obj) {
 }
 
 },{}],29:[function(require,module,exports){
-module.exports.apiURL = "https://web-logger-extension-api.herokuapp.com/";
+module.exports.apiURL = "https://web-logger-extension-api.herokuapp.com/register_log";
 },{}]},{},[2]);
